@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import {observer} from "mobx-react";
+import NavBar from "./components/navBar/NavBar";
+import {BrowserRouter} from "react-router-dom";
+import Footer from "./components/footer/Footer";
+import AppRouter from "./components/AppRouter";
+import "./App.css"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = observer(() => {
+    return (
+        <div className={"app"}>
+            <BrowserRouter>
+                <NavBar/>
+                <AppRouter />
+                <Footer/>
+            </BrowserRouter>
+        </div>
+    );
+})
 
 export default App;

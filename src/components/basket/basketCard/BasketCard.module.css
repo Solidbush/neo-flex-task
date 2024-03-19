@@ -1,0 +1,70 @@
+.card {
+    position: relative;
+    width: 633px;
+    height: 218px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 20px 0 #0000001A;
+}
+
+.image>img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 147px;
+    height: 136px;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+}
+
+.remove {
+    position: absolute;
+    top: 18px;
+    right: 28px;
+    border: inherit;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.mines {
+    position: absolute;
+    bottom: 17px;
+    left: 17px;
+    border: inherit;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.count {
+    position: absolute;
+    bottom: 27px;
+    left: 77px;
+}
+
+.plus {
+    position: absolute;
+    bottom: 17px;
+    left: 97px;
+    border: inherit;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.name {
+    position: absolute;
+    top: 76px;
+    left: 189px;
+}
+
+.price {
+    position: absolute;
+    top: 109px;
+    left: 189px;
+}
+
+.final_price {
+    position: absolute;
+    top: 179px;
+    right: 28px;
+}

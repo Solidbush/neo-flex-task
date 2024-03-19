@@ -1,0 +1,14 @@
+.page {
+    width: 1101px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+}
+
+.summary {
+    margin-left: auto;
+}
