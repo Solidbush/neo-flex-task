@@ -1,0 +1,37 @@
+.navbar {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.navbarBlock {
+    background-color: #EAEAEA;
+    width: 1135px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 31px;
+    color: #101010;
+    margin-right: auto;
+    font-family: 'Montserat', sans-serif;
+    text-decoration: none;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #101010;
+}
+
+.iconBasket {
+    margin-right: 8px;
+}
+
+.iconHeart {
+    margin-right: 4px;
+}
