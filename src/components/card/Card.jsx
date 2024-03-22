@@ -1,44 +1,43 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {ReactComponent as Star} from '../../assets/svg/star.svg'
 import {observer} from "mobx-react";
 import style from "./Card.module.css"
-import {Context} from "../../index";
+import {useProductContext} from "../../index";
 
-const Card = observer((props) => {
-    const {basket} = useContext(Context);
+const Card = observer(({device}) => {
+    const {basket} = useProductContext();
     const addDevice = () => {
-        basket.addDevice(props.device)
+        basket.addDevice(device)
     }
 
     const removeDevice = () => {
-        basket.removeDevice(props.device);
+        basket.removeDevice(device);
     }
 
     return (
         <div className={style.card}>
             <div className={style.image}>
-                <img src={props.device.img} alt="Картинка товара"/>
+                <img src={device.img} alt="Картинка товара"/>
             </div>
             <div className={style.description}>
                 <div className={style.title}>
-                    <b>{props.device.title}</b>
+                    <b>{device.title}</b>
                 </div>
                 <div className={style.price}>
-                    {props.device.price} ₽
-                    <div className={style.old_price}>
-                        {
-                            props.device.old_price ? `${props.device.old_price} ₽` : null
-                        }
-                    </div>
+                    {device.price} ₽
+                    {!!device.old_price && <div className={style.old_price}>
+                        {device.old_price} ₽
+
+                    </div>}
                 </div>
                 <div className={style.rating}>
                     <Star></Star>
                     <div className={style.rating_count}>
-                        {props.device.rating}
+                        {device.rating}
                     </div>
                 </div>
-                <button className={style.button} onClick={basket.findDevice(props.device)  ? removeDevice : addDevice}>
-                    {basket.findDevice(props.device) ?
+                <button className={style.button} onClick={basket.findDevice(device)  ? removeDevice : addDevice}>
+                    {basket.findDevice(device) ?
                         <b>Убрать</b>
                         :
                         <b>Купить</b>

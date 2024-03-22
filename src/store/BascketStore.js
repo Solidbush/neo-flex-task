@@ -17,7 +17,7 @@ export default class BasketStore {
             foundItem.count = foundItem.count + 1;
         }
         else {
-            this._devices.push({id: device.id, device: {...device}, count: 1})
+            this._devices.push({id: device.id, device, count: 1})
         }
     }
 
@@ -26,15 +26,22 @@ export default class BasketStore {
         return this._full_price
     }
 
+    get countDevices() {
+        return this._devices.length;
+    }
+
     countFullPrice() {
-        let full_price = 0
-        this._devices.forEach(item => {
-            let temp_price = item.count * item.device.price;
+        return this._devices.reduce((acc, item) => {
+            const temp_price = item.count * item.device.price;
+            /*
+            * Проверка на undefined в карточке товара
+            */
             if (temp_price) {
-                full_price = temp_price + full_price;
+                acc += temp_price;
             }
-        })
-        return full_price;
+
+            return acc;
+        }, 0)
     }
 
     removeDevice(device) {

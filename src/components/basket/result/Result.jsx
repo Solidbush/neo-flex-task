@@ -1,20 +1,17 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {observer} from "mobx-react";
-import {Context} from "../../../index";
+import {useProductContext} from "../../../index";
 import style from "./Result.module.css"
-const Result = observer((props) => {
-    const {basket} = useContext(Context)
+const Result = observer(() => {
+    const {basket} = useProductContext();
     const removeAll = () => {
         alert("Заказ успешно оформлен")
         basket.removeAllDevices();
     }
-    const fullPrice = () => {
-        let temp_price = basket.fullPrice;
-        if (temp_price) {
-            return temp_price;
-        }
-        return 0;
+    const getFullPrice = () => {
+        return basket.fullPrice ?? 0;
     }
+
     return (
         <div className={style.result}>
             <div>
@@ -24,7 +21,7 @@ const Result = observer((props) => {
             </div>
             <div>
                 <b>
-                    ₽ {fullPrice()}
+                    ₽ {getFullPrice()}
                 </b>
             </div>
             <button className={style.confirm} onClick={removeAll}>
