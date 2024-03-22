@@ -1,9 +1,9 @@
 import {observer} from "mobx-react";
-import NavBar from "./components/navBar/NavBar";
 import {BrowserRouter} from "react-router-dom";
 import Footer from "./components/footer/Footer";
-import AppRouter from "./components/AppRouter";
+import AppRouter from "./AppRouter";
 import "./App.css"
+import {NavBar} from "./components/navBar/NavBar";
 
 const App = observer(() => {
     return (

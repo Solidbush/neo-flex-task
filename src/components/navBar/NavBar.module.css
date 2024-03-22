@@ -28,10 +28,33 @@
     color: #101010;
 }
 
-.iconBasket {
-    margin-right: 8px;
+.iconContainer::before {
+    content: attr(data-count);
+    position: absolute;
+    display: flex;
+    visibility: visible;
+    align-items: center;
+    justify-content: center;
+    top: -4px;
+    right: -10px;
+    width: 18px;
+    height: 18px;
+    font-size: 15px;
+    background: #FFA542;
+    color: #FFFFFF;
+    border-radius: 10px;
 }
 
-.iconHeart {
-    margin-right: 4px;
+.iconContainer[data-count='0']::before {
+    visibility: hidden;
+}
+
+.iconContainer {
+    display: flex;
+    position: relative;
+    margin-right: 40px;
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
 }

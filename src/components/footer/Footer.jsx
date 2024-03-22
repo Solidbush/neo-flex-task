@@ -1,17 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import langs from '../../assets/svg/langs.svg'
 import vk from '../../assets/svg/vk.svg'
 import telegram from '../../assets/svg/tel.svg'
 import whatsup from '../../assets/svg/whatsup.svg'
 import style from './Footer.module.css'
-import {NavLink, useLocation} from "react-router-dom";
-import {BASKET_ROUTE, FAVORITES_ROUTE, MAIN_PAGE_ROUTE} from "../../utils/consts";
+import {NavLink} from "react-router-dom";
+import {BASKET_ROUTE, CONTACTS_ROUTE, FAVORITES_ROUTE, MAIN_PAGE_ROUTE} from "../../routes";
 import {observer} from "mobx-react";
-import {Context} from "../../index";
+import {useProductContext} from "../../index";
 
 const Footer = observer(() => {
-    const {shop} = useContext(Context);
-    const location = useLocation();
+    const {shop} = useProductContext();
     const temp_language = shop.languageName;
     const setLanguage = (name) => {
         shop.changeLanguageName(name);
@@ -24,16 +23,33 @@ const Footer = observer(() => {
                 </div>
                 <div className={style.info}>
                     <div>
-                        <NavLink className={location.pathname === FAVORITES_ROUTE ? style.linkActive : style.link} to={FAVORITES_ROUTE}><p>Избранное</p></NavLink>
-                        <NavLink className={location.pathname === BASKET_ROUTE ? style.linkActive : style.link} to={BASKET_ROUTE}><p>Корзина</p></NavLink>
-                        <NavLink className={style.link} to={"#!"}><p>Контакты</p></NavLink>
+                        <NavLink
+                            className={({isActive}) => isActive ? style.linkActive : style.link}
+                            to={FAVORITES_ROUTE}>
+                            <p>Избранное</p>
+                        </NavLink>
+                        <NavLink
+                            className={({isActive}) => isActive ? style.linkActive : style.link}
+                            to={BASKET_ROUTE}>
+                            <p>Корзина</p>
+                        </NavLink>
+                        <NavLink
+                            className={({isActive}) => isActive ? style.linkActive : style.link}
+                            to={CONTACTS_ROUTE}>
+                            <p>Контакты</p>
+                        </NavLink>
                     </div>
                     <div>
                         <p className={style.service}>Условия сервиса</p>
                         <div className={style.langs}>
                             <img src={langs} alt="Языки"/>
                             {shop.languages.map(language => {
-                                return <button disabled={temp_language === language.name} onClick={() => setLanguage(language.name)}><b>{language.name}</b></button>
+                                return <button
+                                    key={language.name}
+                                    disabled={temp_language === language.name}
+                                    onClick={() => setLanguage(language.name)}>
+                                    <b>{language.name}</b>
+                                </button>
                             })}
                         </div>
                     </div>
